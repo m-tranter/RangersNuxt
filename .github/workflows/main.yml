@@ -26,13 +26,14 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
-    - name: Get libsecret
-      run: sudo apt-get install -y libsecret-1-0
     - name: Contensis block push action
       uses: contensis/block-push@v1
       with:
         alias: chesheast
         block-id: rangersnuxt
+        client-id: ${{ secrets.Z_CLIENT_ID }}
         git-token: ${{ secrets.GIT_TOKEN }}
         image-uri: antiloquax/rangersnuxt:${{ github.run_number }} 
         project-id: blockstest
+        shared-secret: ${{ secrets.Z_SHARED_SECRET }}
+            

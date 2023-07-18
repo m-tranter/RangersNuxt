@@ -1,7 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: {
-  head: {
+    buildAssetsDir: '/rangersevents/',
+    head: {
     title: 'Ranger Events',
     htmlAttrs: {
       lang: 'en'

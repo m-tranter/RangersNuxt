@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   ssr: true,
   app: {
+    buildAssetsDir: '/scripts/',
     head: {
     title: 'Ranger Events',
     htmlAttrs: {

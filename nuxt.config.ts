@@ -1,11 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: true,
-    nitro: {
-    serveStatic: true,
-  },
-  app: {
-    buildAssetsDir: 'scripts/',
+   app: {
+    buildAssetsDir: '/scripts/',
     head: {
     title: 'Ranger Events',
     htmlAttrs: {

@@ -12,6 +12,5 @@
   const entryStore = useEntryStore();
   const {getEntries} = entryStore;
   getEntries();
-  console.log("Default template loaded.");
 </script>
 

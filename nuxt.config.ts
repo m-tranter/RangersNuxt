@@ -1,9 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { viteSingleFile } from "vite-plugin-singlefile";
 export default defineNuxtConfig({
   ssr: true,
-   app: {
-    buildAssetsDir: '/rangersevents/scripts/',
-    head: {
+  vite: {
+    plugins: [
+      viteSingleFile()
+    ]
+  },
+  app: {
+    buildAssetsDir: '/scripts/',
+  head: {
     title: 'Ranger Events',
     htmlAttrs: {
       lang: 'en'
@@ -14,8 +20,7 @@ export default defineNuxtConfig({
     ],
     link: [
       { rel: 'stylesheet', type: 'text/css', href: 'https://www.cheshireeast.gov.uk/siteelements/css/bs5/400-cec-styles.css' },
-      { rel: 'stylesheet', type: 'text/css', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Open+Sans+Condensed:wght@700&display=swap' },
-      {rel: 'stylesheet', type: 'text/css', href: 'https://www.cheshireeast.gov.uk/SiteElements/css/bs5/600-events-vue-axios.css'},
+      {rel: 'stylesheet', type: 'text/css', href: 'https://www.cheshireeast.gov.uk/siteelements/css/bs5/600-events-vue-axios.css'},
     ],
   },
   },

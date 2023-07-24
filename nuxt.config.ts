@@ -1,14 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import { viteSingleFile } from "vite-plugin-singlefile";
 export default defineNuxtConfig({
   ssr: true,
-  vite: {
-    plugins: [
-      viteSingleFile()
-    ]
-  },
   app: {
     buildAssetsDir: '/scripts/',
+    baseURL:'/rangerevents/',
   head: {
     title: 'Ranger Events',
     htmlAttrs: {

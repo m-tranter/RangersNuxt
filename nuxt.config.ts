@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   ssr: true,
   app: {
     buildAssetsDir: '/scripts/',
-    baseURL:'/rangerevents/',
+    baseURL:'/rangersevents/',
   head: {
     title: 'Ranger Events',
     htmlAttrs: {

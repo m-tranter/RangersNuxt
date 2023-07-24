@@ -9,7 +9,7 @@ const { getTime, formatDate } = entryStore;
     tabindex="0"
     class="linkDiv ranger-event-card card card-item flex-md-row align-items-center"
   >
-    <NuxtLink :href="`/events/${item.sys.slug}`"
+    <NuxtLink :href="`rangersevents/events/${item.sys.slug}`"
       ><span class="innerLink"
         ><span class="visually-hidden">{{ item.title }}</span></span
       ></NuxtLink

@@ -139,12 +139,8 @@ export const useEntryStore = defineStore('entries', {
       return time.replace(' ', '');
     },
     getEntries: async function () {
-      await fetch(this.url)
-        .then(res => {
-          return res.json();
-        })
-        .then((data) => {
-        this.copyItems = this.createDates(data.items);
+      useFetch(this.url).then((data) => {
+        this.copyItems = this.createDates(data.data._rawValue.items);
         if (this.copyItems.length) {
           this.copyItems.sort(this.sortDate());
         }

@@ -11,12 +11,12 @@
         </button>
       </li>
       <li
-        v-for="pageBtn in pageBtns"
+        v-for="(pageBtn, i) in pageBtns"
         class="page-item"
-        v-bind:class="{ disabled: pageIndex === pageBtn - 1 }"
+        v-bind:class="{ disabled: pageIndex === i}"
         v-bind:key="pageBtn"
       >
-        <button class="page-link" type="button" v-on:click="goToPage(pageBtn)">
+        <button class="page-link" type="button" v-on:click="goToPage(i)">
           {{ pageBtn }}
         </button>
       </li>
@@ -44,6 +44,6 @@ const {pageIndex, pageBtns, pageCount } = storeToRefs(entryStore);
 </script>
 <script>
 export default {
-  name: 'pagination',
+  name: 'Pagination',
 };
 </script>

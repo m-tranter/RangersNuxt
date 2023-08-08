@@ -1,20 +1,18 @@
 <script setup>
 import { storeToRefs } from 'pinia';
 const entryStore = useEntryStore();
-const { goToPage, applyFilters } = entryStore;
+const {  applyFilters } = entryStore;
 
 const {
   categories,
   categoriesChecked,
-  items,
+  pages,
   totalCount,
   searchAlert,
   searchTerm,
   toDate,
   fromDate,
   pageIndex,
-  pageBtns,
-  pageCount,
 } = storeToRefs(entryStore);
 useHead({
   meta: [
@@ -39,12 +37,12 @@ useHead({
           Current page: <strong>{{ pageIndex + 1 }}</strong>
         </p>
       </div>
-      <Card :items="items" />
+      <div v-for="(_, i) in pages" :key="i"
+        v-show="i === pageIndex"
+        >
+        <MyPage :i ="i" />
+      </div>
       <Pagination
-        :goToPage="goToPage"
-        :pageCount="pageCount"
-        :pageBtns="pageBtns"
-        :pageIndex="pageIndex"
       />
     </div>
     <div class="col-lg-4 mt-3 mt-lg-0">

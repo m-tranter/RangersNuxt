@@ -1,6 +1,6 @@
 export const useEntryStore = defineStore('entries', {
   state: () => ({
-    items: [],
+    pages: [],
     copyItems: [],
     categoriesChecked: [],
     rxDate: /^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2})?(?:\.\d*)?Z?$/,
@@ -44,9 +44,14 @@ export const useEntryStore = defineStore('entries', {
       'There is a charge for this event',
       'Wildlife walk / Event',
     ],
-    firstRender: true,
   }),
   actions: {
+    setItem(obj) {
+      this.item = obj;
+    },
+    unsetItem() {
+      this.item = {};
+    },
     clearAlert: function () {
       this.searchAlert = false;
     },
@@ -96,17 +101,15 @@ export const useEntryStore = defineStore('entries', {
       this.pageIndex = 0;
       this.pageBtns = Array.from({ length: this.pageCount }, (_, i) => i + 1);
       this.createPages();
-      this.items = this.pages[0];
     },
     createPages: function () {
       this.pages = [
         ...Array(Math.ceil(this.searchedItems.length / this.pageSize)),
       ].map((_) => this.searchedItems.splice(0, this.pageSize));
     },
-    goToPage: function (pageNum) {
+    goToPage: function (i) {
       document.getElementById('contentTypesContainer').scrollIntoView();
-      this.items = this.pages[pageNum - 1];
-      this.pageIndex = pageNum - 1;
+      this.pageIndex = i;
       this.lastSearch = this.searchTerm;
     },
     applyFilters: function (cat) {
@@ -136,14 +139,17 @@ export const useEntryStore = defineStore('entries', {
       return time.replace(' ', '');
     },
     getEntries: async function () {
-      useFetch(this.url).then((data) => {
-        this.copyItems = this.createDates(data.data._rawValue.items);
+      await fetch(this.url)
+        .then(res => {
+          return res.json();
+        })
+        .then((data) => {
+        this.copyItems = this.createDates(data.items);
         if (this.copyItems.length) {
           this.copyItems.sort(this.sortDate());
         }
         this.filteredItems = this.copyItems.slice();
         this.searchedItems = this.copyItems.slice();
-        this.loading = false;
         this.calculatePages();
       });
     },

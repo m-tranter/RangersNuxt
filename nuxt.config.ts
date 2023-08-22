@@ -2,7 +2,7 @@
 
 export default defineNuxtConfig({
   app: {
-    buildAssetsDir: '/rangersevents/',
+    buildAssetsDir: '/static/',
   head: {
     title: 'Ranger Events',
     htmlAttrs: {

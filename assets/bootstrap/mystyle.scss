@@ -1,1 +1,7 @@
 @import "bootstrap/scss/bootstrap";
+.btn-outline-secondary {
+ border-radius: 5px!important;
+}
+.btn-outline-secondary:hover {
+  color: White!important;
+}

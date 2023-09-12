@@ -144,6 +144,7 @@ export const useEntryStore = defineStore('entries', {
         if (this.copyItems.length) {
           this.copyItems.sort(this.sortDate());
         }
+        console.log(`Got ${this.copyItems.length} items.`);
         this.filteredItems = this.copyItems.slice();
         this.searchedItems = this.copyItems.slice();
         this.calculatePages();

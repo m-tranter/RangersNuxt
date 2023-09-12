@@ -13,7 +13,7 @@ const {pages} = storeToRefs(entryStore);
   >
     <NuxtLink :href="`rangersevents/events/${item.sys.slug}`"
       ><span class="innerLink"
-        ><span class="visually-hidden"></span></span
+        ><span class="visually-hidden text-black">link</span></span
       ></NuxtLink
     >
     <div
